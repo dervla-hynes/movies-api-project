@@ -1,3 +1,17 @@
+// vendor imports
+@import 'vendor/reset';
+
+//module imports
+@import 'modules/colors';
+@import 'modules/responsiveness';
+@import 'modules/typography';
+
+//component imports
+@import 'components/nav';
+@import 'components/movie-container';
+
 body {
-    background-color: aqua;
+    font-family: $font-family;
+    font-size: $font-size;
+    background-color: $tertiary-color;
 }

@@ -3,12 +3,27 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Project Boilerplate</title>
+    <title>Movies API Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/0bddc79600.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="dist/main.css" />
     <script src="dist/main.js" type="module"></script>
 </head>
 <body>
-    
+    <nav>
+        <div id="logo">
+            <i class="fas fa-film"></i>
+            <h1>Movieez</h1>
+        </div>
+        <div id="search-box">
+            <input id="movie" type="text" placeholder="Search for movie title...">
+            <button id="search-button"><i class="fas fa-search"></i></button>
+        </div>
+    </nav>
+    <main>
+        <h2 id="search-header">Movies displayed here</h2>
+        <ul></ul>
+    </main>
 </body>
 </html>

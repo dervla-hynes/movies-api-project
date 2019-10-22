@@ -1,0 +1,42 @@
+nav {
+    background-color: $secondary-color;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+
+    #logo {
+        display: flex;
+        flex-direction: row;
+
+        i {
+            font-size: 2em;
+            padding: 0 20px;
+        }
+    
+        h1 {
+            font-size: 2em;
+        }
+    }
+
+    #search-box {
+        margin-top: 5px;
+
+        input {
+            border-radius: 6px;
+            text-decoration: none;
+            border: none;
+            padding: 5px;
+            margin-right: 5px;
+        }
+
+        button {
+            background-color: white;
+            border-radius: 6px;
+            border: none;
+            padding: 5px;
+            color: $primary-color;
+        }
+    }
+}
