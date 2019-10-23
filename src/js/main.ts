@@ -10,6 +10,8 @@ interface IMovie {
 
 let title = "movie";
 let year = '';
+let favourites = [];
+let ulFavourites = document.getElementById("favourites-list");
 
 //get data from the api
 
@@ -26,6 +28,16 @@ const getMovies = async (title: string): Promise<any> => {
     }
 }
 
+//add to favourites function
+
+const addToFavs = (movieTitle) => {
+    let liFavourite = document.createElement('li');
+    liFavourite.innerHTML = `<p id="${movieTitle}">${movieTitle}</p>`;
+    if (!document.getElementById(`${movieTitle}`)) {
+    ulFavourites.append(liFavourite);
+    }
+}
+
 //build Movie list function
 const buildMovieList = (movie, ulMovies) => {
     let liTitle = document.createElement('li');
@@ -35,6 +47,7 @@ const buildMovieList = (movie, ulMovies) => {
         liTitle.innerHTML = `<p>${movie.Title}</p><img src="${movie.Poster}" alt=""><p id="hidden-box">Made in ${movie.Year}</p>`;
     }
     ulMovies.append(liTitle);
+    liTitle.addEventListener('click', () => addToFavs(movie.Title));
 }
 
 //add years to the filter dropdown
@@ -98,10 +111,7 @@ $("#dropbtn").click( () => {
 
 //build favourites list
 $("#favouritesbtn").click( () => {
-    $("#favourites").toggle();
+    $("#favourites-list").toggle();
 });
 
-
-//define movie interface?
-//make a 'make card' function?
 

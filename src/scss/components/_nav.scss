@@ -61,7 +61,7 @@ nav {
                 background-color: $secondary-color;
 
                 button {
-                    color: $tertiary-color;
+                    color: white;
                     text-decoration: none;
                     padding: 10px 20px;
                     background-color: $secondary-color;
@@ -70,11 +70,26 @@ nav {
             }
         }
 
-        h2 {
-            padding: 10px;
-            cursor: pointer;
-            border: 2px solid white;
-            border-radius: 6px;
+        #favourites {
+
+            #favouritesbtn {
+                padding: 10px;
+                cursor: pointer;
+                border: 2px solid white;
+                border-radius: 6px;
+            }
+
+            #favourites-list {
+                display: none;
+                position: fixed;
+                z-index: 2;
+
+                li {
+                    padding: 20px;
+                    background-color: $secondary-color;
+                    color: white;
+                }
+            }
         }
     }
 }

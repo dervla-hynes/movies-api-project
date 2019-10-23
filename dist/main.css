@@ -95,16 +95,24 @@ nav {
         z-index: 2;
         background-color: #0e1364; }
         nav #search-box .dropdown #myDropdown button {
-          color: #a1d3f5;
+          color: white;
           text-decoration: none;
           padding: 10px 20px;
           background-color: #0e1364;
           cursor: pointer; }
-    nav #search-box h2 {
+    nav #search-box #favourites #favouritesbtn {
       padding: 10px;
       cursor: pointer;
       border: 2px solid white;
       border-radius: 6px; }
+    nav #search-box #favourites #favourites-list {
+      display: none;
+      position: fixed;
+      z-index: 2; }
+      nav #search-box #favourites #favourites-list li {
+        padding: 20px;
+        background-color: #0e1364;
+        color: white; }
 
 main h2 {
   color: #101D42;
