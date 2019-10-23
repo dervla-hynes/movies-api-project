@@ -30,9 +30,9 @@ const getMovies = async (title: string): Promise<any> => {
 const buildMovieList = (movie, ulMovies) => {
     let liTitle = document.createElement('li');
     if (movie.Poster === 'N/A') {
-        liTitle.innerHTML = `<p>${movie.Title} , ${movie.Year}</p><img src="../assets/popcorn.jpg" alt=""><p id="hidden-box">${movie.Plot}</p>`;
+        liTitle.innerHTML = `<p>${movie.Title}</p><img src="../assets/popcorn.jpg" alt=""><p id="hidden-box">Made in ${movie.Year}</p>`;
     } else {
-        liTitle.innerHTML = `<p>${movie.Title} , ${movie.Year}</p><img src="${movie.Poster}" alt=""><p id="hidden-box">${movie.Plot}</p>`;
+        liTitle.innerHTML = `<p>${movie.Title}</p><img src="${movie.Poster}" alt=""><p id="hidden-box">Made in ${movie.Year}</p>`;
     }
     ulMovies.append(liTitle);
 }
@@ -62,12 +62,12 @@ const resetLists = (header, ulMovies, ulYears) => {
 const updateMovies = () => {
     getMovies(title).then((data) => {
         //movie results on the page
-        console.log(data);
         const header = document.getElementById("search-header");
         const ulMovies = document.getElementById("movies");
         const ulYears = document.getElementById("years");
         resetLists(header, ulMovies, ulYears);
         data.Search.forEach((movie) => {
+            console.log(movie);
             buildMovieList(movie, ulMovies);
             if (movie.Year.length < 5 && !document.getElementById(`${movie.Year}`)) {
             addYears(movie, ulYears);

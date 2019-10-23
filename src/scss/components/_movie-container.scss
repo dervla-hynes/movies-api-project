@@ -24,11 +24,11 @@ main {
             transition: all .2s ease-in-out;
             height: 350px;
             width: 250px; 
+            position: relative;
 
-                &:hover {
-                    transform: scale(1.1);
-                    opacity: 0.3;
-                }
+            &:hover {
+                transform: scale(1.1);
+            }
 
             p {
                 padding: 10px;
@@ -38,6 +38,28 @@ main {
             img {
                 height: 300px;
                 width: 200px;
+                transition: all .2s ease-in-out;
+
+                &:hover {
+
+                    &~#hidden-box {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            #hidden-box {
+                position: absolute;
+                top: 100px;
+                padding: 100px 20px;
+                opacity: 0;
+                background-color: white;
+                border-radius: 6px;
+                transition: all .2s ease-in-out;
+
+                &:hover {
+                    opacity: 1;
+                }
             }
         }
     }
