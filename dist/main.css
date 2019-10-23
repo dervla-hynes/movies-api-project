@@ -57,24 +57,42 @@ nav {
     display: flex;
     flex-direction: row; }
     nav #logo i {
-      font-size: 2em;
+      font-size: 2.3em;
       padding: 0 20px; }
     nav #logo h1 {
-      font-size: 2em; }
+      font-size: 2.3em; }
   nav #search-box {
-    margin-top: 5px; }
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row; }
     nav #search-box input {
       border-radius: 6px;
       text-decoration: none;
       border: none;
-      padding: 5px;
-      margin-right: 5px; }
+      padding: 10px;
+      margin-right: 10px; }
     nav #search-box button {
       background-color: white;
       border-radius: 6px;
       border: none;
-      padding: 5px;
+      padding: 10px;
       color: #101D42; }
+    nav #search-box .dropdown {
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px; }
+      nav #search-box .dropdown #myDropdown {
+        display: none;
+        top: 80px;
+        flex-direction: column;
+        position: fixed;
+        columns: 1;
+        z-index: 2;
+        background-color: #0c1372; }
+        nav #search-box .dropdown #myDropdown a {
+          color: #b4dffc;
+          text-decoration: none;
+          padding: 10px; }
 
 main h2 {
   color: #101D42;
