@@ -16,11 +16,11 @@ let year = '';
 const getMovies = async (title: string): Promise<any> => {
     let url = '';
     if (year !== '') {
-        url = `http://www.omdbapi.com/?apikey=bad11b7b&s=${title}&y=${year}`;
+        url = `https://www.omdbapi.com/?apikey=bad11b7b&s=${title}&y=${year}`;
         const response = await fetch(url);
         return await response.json();
     } else {
-    url = `http://www.omdbapi.com/?apikey=bad11b7b&s=${title}`
+    url = `https://www.omdbapi.com/?apikey=bad11b7b&s=${title}`
     const response = await fetch(url);
     return await response.json();
     }
@@ -30,9 +30,9 @@ const getMovies = async (title: string): Promise<any> => {
 const buildMovieList = (movie, ulMovies) => {
     let liTitle = document.createElement('li');
     if (movie.Poster === 'N/A') {
-        liTitle.innerHTML = `<p>${movie.Title} , ${movie.Year}</p><img src="../assets/popcorn.jpg" alt="">`;
+        liTitle.innerHTML = `<p>${movie.Title} , ${movie.Year}</p><img src="../assets/popcorn.jpg" alt=""><p id="hidden-box">${movie.Plot}</p>`;
     } else {
-        liTitle.innerHTML = `<p>${movie.Title} , ${movie.Year}</p><img src="${movie.Poster}" alt="">`;
+        liTitle.innerHTML = `<p>${movie.Title} , ${movie.Year}</p><img src="${movie.Poster}" alt=""><p id="hidden-box">${movie.Plot}</p>`;
     }
     ulMovies.append(liTitle);
 }
@@ -62,6 +62,7 @@ const resetLists = (header, ulMovies, ulYears) => {
 const updateMovies = () => {
     getMovies(title).then((data) => {
         //movie results on the page
+        console.log(data);
         const header = document.getElementById("search-header");
         const ulMovies = document.getElementById("movies");
         const ulYears = document.getElementById("years");
