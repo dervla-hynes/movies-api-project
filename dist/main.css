@@ -89,7 +89,7 @@ nav {
         columns: 1;
         z-index: 2;
         background-color: #0c1372; }
-        nav #search-box .dropdown #myDropdown a {
+        nav #search-box .dropdown #myDropdown p {
           color: #b4dffc;
           text-decoration: none;
           padding: 10px; }

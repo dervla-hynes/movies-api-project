@@ -1,4 +1,5 @@
 import { get } from "http";
+// import {  } from './API/api';
 
 //getting data from an API
 
@@ -8,14 +9,20 @@ let year = '';
 //get data from the api
 
 const getMovies = async (title: string): Promise<any> => {
-    let url = `http://www.omdbapi.com/?apikey=bad11b7b&s=${title}`;
+    let url = '';
     if (year !== '') {
         url = `http://www.omdbapi.com/?apikey=bad11b7b&s=${title}&y=${year}`;
-        return url;
-    } 
+        const response = await fetch(url);
+        return await response.json();
+    } else {
+    url = `http://www.omdbapi.com/?apikey=bad11b7b&s=${title}`
     const response = await fetch(url);
     return await response.json();
+    }
 }
+
+//define movie interface
+
 
 const updateMovies = () => {
     getMovies(title).then((data) => {
@@ -48,17 +55,28 @@ const searchButton = document.getElementById("search-button");
 searchButton.addEventListener('click', searchMovies);
 
 //filter for year
-//y=2011
-// if y = '' then  url = `http://www.omdbapi.com/?apikey=bad11b7b&s=${title}` else url = `http://www.omdbapi.com/?apikey=bad11b7b&s=${title}&y=${year}`;
 
 //toggle the display of the dropdown
-$("#dropbtn").click(function(){
+$("#dropbtn").click( () => {
     $("#myDropdown").toggle();
-  });
+});
 
 //let the years filter the movies
-  $("#2012").click(function(){
+
+$("#2012").click( () => {
     year = '2012';
     getMovies(title);
     updateMovies();
-  });
+});
+
+$("#2013").click( () => {
+    year = '2013';
+    getMovies(title);
+    updateMovies();
+});
+
+$("#2014").click( () => {
+    year = '2014';
+    getMovies(title);
+    updateMovies();
+});
