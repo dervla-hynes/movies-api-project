@@ -1,7 +1,12 @@
 import { get } from "http";
 // import {  } from './API/api';
 
-//getting data from an API
+//initial page settings for the movie search
+interface IMovie {
+    title: string;
+    year: string;
+    poster: string;
+}
 
 let title = "magic";
 let year = '';
@@ -21,21 +26,42 @@ const getMovies = async (title: string): Promise<any> => {
     }
 }
 
-//define movie interface
+//define movie interface?
+//make a 'make card' function?
 
+//build Movie list function
+const buildMovieList = (movie, ulMovies) => {
+    let liTitle = document.createElement('li');
+    if (movie.Poster === 'N/A') {
+        liTitle.innerHTML = `<p>${movie.Title} , ${movie.Year}</p><img src="../assets/popcorn.jpg" alt="">`;
+    } else {
+        liTitle.innerHTML = `<p>${movie.Title} , ${movie.Year}</p><img src="${movie.Poster}" alt="">`;
+    }
+    ulMovies.append(liTitle);
+}
+
+//add years to the filter dropdown
+
+const addYears = (movie, ulYears) => {
+    let liYear= document.createElement('li');
+    liYear.innerHTML = `<button id="${movie.Year}">${movie.Year}</button>`;
+    ulYears.append(liYear);
+}
+
+//update movies function
 
 const updateMovies = () => {
     getMovies(title).then((data) => {
         //movie results on the page
         const header = document.getElementById("search-header");
         header.innerHTML = `Results for movies containing "${title}":`;
-        const ul = document.getElementsByTagName("ul")[0];
-        ul.innerHTML = "";
-        console.log(data.Search);
+        const ulMovies = document.getElementById("movies");
+        ulMovies.innerHTML = "";
+        const ulYears = document.getElementById("years");
+        ulYears.innerHTML = "";
         data.Search.forEach((movie) => {
-            let liTitle = document.createElement('li');
-            liTitle.innerHTML = `<p>${movie.Title} , ${movie.Year}</p><img src="${movie.Poster}" alt="">`;
-            ul.append(liTitle)
+            buildMovieList(movie, ulMovies);
+            addYears(movie, ulYears);
         });
     });
 }
@@ -80,3 +106,4 @@ $("#2014").click( () => {
     getMovies(title);
     updateMovies();
 });
+
