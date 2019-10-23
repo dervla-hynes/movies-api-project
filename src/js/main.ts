@@ -8,7 +8,7 @@ interface IMovie {
     poster: string;
 }
 
-let title = "magic";
+let title = "movie";
 let year = '';
 
 //get data from the api
@@ -44,8 +44,15 @@ const buildMovieList = (movie, ulMovies) => {
 
 const addYears = (movie, ulYears) => {
     let liYear= document.createElement('li');
-    liYear.innerHTML = `<button id="${movie.Year}">${movie.Year}</button>`;
-    ulYears.append(liYear);
+    if (!document.getElementById(`${movie.Year}`)) {
+        liYear.innerHTML = `<button id="${movie.Year}">${movie.Year}</button>`;
+        ulYears.append(liYear);
+        $(`#${movie.Year}`).click( () => {
+            year = `${movie.Year}`;
+            getMovies(title);
+            updateMovies();
+        });
+    }
 }
 
 //update movies function
@@ -61,7 +68,9 @@ const updateMovies = () => {
         ulYears.innerHTML = "";
         data.Search.forEach((movie) => {
             buildMovieList(movie, ulMovies);
+            if (movie.Year.length < 5) {
             addYears(movie, ulYears);
+            }
         });
     });
 }
@@ -81,29 +90,9 @@ const searchButton = document.getElementById("search-button");
 searchButton.addEventListener('click', searchMovies);
 
 //filter for year
-
 //toggle the display of the dropdown
 $("#dropbtn").click( () => {
     $("#myDropdown").toggle();
 });
 
-//let the years filter the movies
-
-$("#2012").click( () => {
-    year = '2012';
-    getMovies(title);
-    updateMovies();
-});
-
-$("#2013").click( () => {
-    year = '2013';
-    getMovies(title);
-    updateMovies();
-});
-
-$("#2014").click( () => {
-    year = '2014';
-    getMovies(title);
-    updateMovies();
-});
 

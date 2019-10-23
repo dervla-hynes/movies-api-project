@@ -52,7 +52,10 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: white; }
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1; }
   nav #logo {
     display: flex;
     flex-direction: row; }
@@ -117,7 +120,8 @@ main ul {
     height: 350px;
     width: 250px; }
     main ul li:hover {
-      transform: scale(1.1); }
+      transform: scale(1.1);
+      opacity: 0.3; }
     main ul li p {
       padding: 10px;
       text-align: center; }
