@@ -26,9 +26,6 @@ const getMovies = async (title: string): Promise<any> => {
     }
 }
 
-//define movie interface?
-//make a 'make card' function?
-
 //build Movie list function
 const buildMovieList = (movie, ulMovies) => {
     let liTitle = document.createElement('li');
@@ -44,15 +41,20 @@ const buildMovieList = (movie, ulMovies) => {
 
 const addYears = (movie, ulYears) => {
     let liYear= document.createElement('li');
-    if (!document.getElementById(`${movie.Year}`)) {
-        liYear.innerHTML = `<button id="${movie.Year}">${movie.Year}</button>`;
-        ulYears.append(liYear);
-        $(`#${movie.Year}`).click( () => {
-            year = `${movie.Year}`;
-            getMovies(title);
-            updateMovies();
-        });
-    }
+    liYear.innerHTML = `<button id="${movie.Year}">${movie.Year}</button>`;
+    ulYears.append(liYear);
+    $(`#${movie.Year}`).click( () => {
+        year = `${movie.Year}`;
+        getMovies(title);
+        updateMovies();
+    });
+}
+
+//reset all lists
+const resetLists = (header, ulMovies, ulYears) => {
+    ulMovies.innerHTML = "";
+    ulYears.innerHTML = "";
+    header.innerHTML = `Results for movies containing "${title}":`;
 }
 
 //update movies function
@@ -61,14 +63,12 @@ const updateMovies = () => {
     getMovies(title).then((data) => {
         //movie results on the page
         const header = document.getElementById("search-header");
-        header.innerHTML = `Results for movies containing "${title}":`;
         const ulMovies = document.getElementById("movies");
-        ulMovies.innerHTML = "";
         const ulYears = document.getElementById("years");
-        ulYears.innerHTML = "";
+        resetLists(header, ulMovies, ulYears);
         data.Search.forEach((movie) => {
             buildMovieList(movie, ulMovies);
-            if (movie.Year.length < 5) {
+            if (movie.Year.length < 5 && !document.getElementById(`${movie.Year}`)) {
             addYears(movie, ulYears);
             }
         });
@@ -95,4 +95,12 @@ $("#dropbtn").click( () => {
     $("#myDropdown").toggle();
 });
 
+//build favourites list
+$("#favouritesbtn").click( () => {
+    $("#favourites").toggle();
+});
+
+
+//define movie interface?
+//make a 'make card' function?
 
